@@ -19,7 +19,7 @@ passport.use(
                     //we don't have a user record with this id, make a new record
                     new User({ googleID: profile.id}).save();
                 }        
-            })
+            });
         
     })
 );
