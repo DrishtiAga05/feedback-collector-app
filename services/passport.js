@@ -21,7 +21,7 @@ passport.use(
     new GoogleStrategy({
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
-        callbackURL: '/auth/google/callback',
+        callbackURL: 'https://feedback-collector-app-6xco.onrender.com/auth/google/callback',
         proxy: true
     }, (accessToken, refreshToken, profile, done) => {
         User.findOne({ googleID: profile.id})
