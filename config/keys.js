@@ -1,6 +1,7 @@
-module.exports={
-    googleClientID : process.env.GOOGLE_CLIENT_ID,
-    googleClientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    mongoURI: process.env.MONGO_URI,
-    cookieKey: process.env.COOKIE_KEY
-};
+if(process.env.NODE_ENV === 'production') {
+    // we are in production
+    module.exports= require('./prod'); 
+} else {
+    // we are in development
+    module.exports =require('./dev');
+}
