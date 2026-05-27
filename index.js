@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser= require('body-parser');
 const keys = require('./config/keys'); // MUST BE FIRST
 
 require('./models/User');
@@ -17,6 +18,8 @@ console.log("COOKIE:", keys.cookieKey);
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+
+app.use(bodyParser.json());
 
 // Cookie session
 app.use(
@@ -43,6 +46,8 @@ if (process.env.NODE_ENV === 'production') {
     );
 });
 }
+
+require('./routes/billingRoutes')(app);
 
 // Start server
 const PORT = process.env.PORT || 5000;
