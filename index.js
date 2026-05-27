@@ -25,11 +25,16 @@ require('./routes/authRoutes')(app);
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 
-    app.get('/*', (req, res) => {
+    app.use((req, res, next) => {
+    if (req.method === 'GET') {
         res.sendFile(
             path.resolve(__dirname, 'client', 'build', 'index.html')
         );
-    });
+    } else {
+        next();
+    }
+});
+    
 }
 
 const PORT= process.env.PORT||5000;
