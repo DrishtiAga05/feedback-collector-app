@@ -31,7 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-//require('./routes/authRoutes')(app);
+require('./routes/authRoutes')(app);
 
 // ===== PRODUCTION STATIC FILES =====
 if (process.env.NODE_ENV === 'production') {
