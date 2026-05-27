@@ -1,3 +1,6 @@
+console.log("MONGO:", keys.mongoURI);
+console.log("GOOGLE ID:", keys.googleClientID);
+console.log("COOKIE:", keys.cookieKey);
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
