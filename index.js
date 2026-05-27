@@ -1,16 +1,19 @@
-console.log("MONGO:", keys.mongoURI);
-console.log("GOOGLE ID:", keys.googleClientID);
-console.log("COOKIE:", keys.cookieKey);
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const keys = require('./config/keys');
+const keys = require('./config/keys'); // MUST BE FIRST
 
 require('./models/User');
 require('./services/passport');
 
+// DEBUG (safe placement)
+console.log("MONGO:", keys.mongoURI);
+console.log("GOOGLE ID:", keys.googleClientID);
+console.log("COOKIE:", keys.cookieKey);
+
+// MongoDB connect
 mongoose.connect(keys.mongoURI);
 
 const app = express();
