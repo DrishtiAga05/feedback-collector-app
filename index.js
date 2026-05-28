@@ -7,6 +7,7 @@ const bodyParser= require('body-parser');
 const keys = require('./config/keys'); // MUST BE FIRST
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 // DEBUG (safe placement)
@@ -48,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 // Start server
 const PORT = process.env.PORT || 5000;
