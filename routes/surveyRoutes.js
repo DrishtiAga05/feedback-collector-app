@@ -8,7 +8,6 @@ const Survey= mongoose.model('surveys');
 
 module.exports = app => {
     app.get('/api/surveys/thanks', (req,res) => {
-        console.log('THANKS ROUTE HIT');
         res.send('Thanks for voting!');
     });
 
@@ -30,7 +29,6 @@ module.exports = app => {
             const mailer= new Mailer(survey, surveyTemplate(survey));
 
             try{
-                console.log(surveyTemplate(survey));
                 await mailer.send();
                 await survey.save();
                 //req.user.credits-= 1;
