@@ -37,6 +37,10 @@ app.use(passport.session());
 // Routes
 require('./routes/authRoutes')(app);
 
+
+require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
+
 // ===== PRODUCTION STATIC FILES =====
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'client', 'build')));
@@ -47,9 +51,6 @@ if (process.env.NODE_ENV === 'production') {
     );
 });
 }
-
-require('./routes/billingRoutes')(app);
-require('./routes/surveyRoutes')(app);
 
 // Start server
 const PORT = process.env.PORT || 5000;
